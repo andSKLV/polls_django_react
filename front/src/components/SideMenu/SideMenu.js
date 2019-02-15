@@ -11,12 +11,14 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import AccounCircleIcon from "@material-ui/icons/AccountCircle";
 import QueestionIcon from "@material-ui/icons/QuestionAnswer";
 
 const sidebarFill = [
   { name: "Ответить", icon: <QueestionIcon /> },
   { name: "Создать", icon: <InboxIcon /> },
-  { name: "Результаты", icon: <MailIcon /> }
+  { name: "Результаты", icon: <MailIcon /> },
+  { type: "login", icon: <AccounCircleIcon /> }
 ];
 
 const SideMenu = props => {
@@ -46,12 +48,15 @@ const SideMenu = props => {
       </div>
       <Divider />
       <List>
-        {sidebarFill.map(({ name, icon }) => (
-          <ListItem button key={name}>
-            <ListItemIcon>{icon}</ListItemIcon>
-            <ListItemText primary={name} />
-          </ListItem>
-        ))}
+        {sidebarFill.map(({ name, icon, type }) => {
+          if (type === "login") name = props.isLoggedIn ? "Выйти" : "Войти";
+          return (
+            <ListItem button key={name}>
+              <ListItemIcon>{icon}</ListItemIcon>
+              <ListItemText primary={name} />
+            </ListItem>
+          );
+        })}
       </List>
     </Drawer>
   );

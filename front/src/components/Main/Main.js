@@ -82,7 +82,8 @@ const styles = theme => ({
 class Main extends React.Component {
   state = {
     open: false,
-    questions: []
+    questions: [],
+    isLoggedIn: true
   };
 
   handleDrawerOpen = () => {
@@ -118,6 +119,7 @@ class Main extends React.Component {
           classes={classes}
           theme={theme}
           isOpen={this.state.open}
+          isLoggedIn={this.state.isLoggedIn}
         />
         <div className={classes.cardHolder}>
           {this.state.questions.map((card, i) => {
