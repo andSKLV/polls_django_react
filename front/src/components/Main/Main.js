@@ -1,11 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import SideMenu from "../SideMenu";
-import NavBar from "../NavBar";
-import Card from "../Card";
+import { withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
 import { GetQuestions, GetQuestionsMock } from "../../service/Api.js";
+import Card from "../Card";
+import NavBar from "../NavBar";
+import SideMenu from "../SideMenu";
+import LogIn from "../LogIn";
+import Plate from "../Plate";
 
 const drawerWidth = 200;
 
@@ -121,8 +123,9 @@ class Main extends React.Component {
           isOpen={this.state.open}
           isLoggedIn={this.state.isLoggedIn}
         />
-        <div className={classes.cardHolder}>
-          {this.state.questions.map((card, i) => {
+        <Plate child={<LogIn />} />
+        {/* <Plate
+          child={this.state.questions.map((card, i) => {
             return (
               <Card
                 name={card.title}
@@ -133,7 +136,7 @@ class Main extends React.Component {
               />
             );
           })}
-        </div>
+        /> */}
       </div>
     );
   }
